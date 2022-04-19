@@ -11,7 +11,7 @@
       callAdd(str1);
     }
 
-    function callAdd(value1) {
+    function callAdd(value) {
       var xmlhttp = new XMLHttpRequest();
 
       xmlhttp.onreadystatechange = function() {
@@ -24,7 +24,7 @@
           }
         }
       }
-      var url = "https://api.ethplorer.io/" + "/getTxInfo/"  + value1 + "?apiKey=EK-bqwA4-T8wB3SE-uUj9N";
+      var url = "https://api.ethplorer.io/" + "/getTxInfo/"  + value + "?apiKey=EK-bqwA4-T8wB3SE-uUj9N";
       xmlhttp.open("GET", url);
       xmlhttp.send();
     }
