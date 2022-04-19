@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My JPYC app</title>
+  <meta charset="utf-8" />
+  <title>トランザクション履歴の確認</title>
+
+  <script type="text/javascript">
+
+    function onButtonClick() {
+      var str1 = document.getElementById("text1").value;
+      callAdd(str1);
+    }
+
+    function callAdd(value1) {
+      var xmlhttp = new XMLHttpRequest();
+
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4) {
+          if (xmlhttp.status == 200) {
+            var elem = document.getElementById("output");
+            elem.innerText = xmlhttp.responseText;
+          } else {
+            alert("status = " + xmlhttp.status);
+          }
+        }
+      }
+      var url = "https://api.ethplorer.io/" + "/getTxInfo/"  + value1 + "?apiKey=EK-bqwA4-T8wB3SE-uUj9N";
+      xmlhttp.open("GET", url);
+      xmlhttp.send();
+    }
+  </script>
 </head>
 <body>
-    <h1>This is JPYC</h1>
+  <h2>トランザクション内容の確認</h2>
+
+  トランザクション番号:<input id="text1" type="text" /><br />
+  <button onclick="onButtonClick()">確認</button><br/>
+  結果:<div id="output"></div>
 </body>
 </html>
