@@ -18,7 +18,7 @@
         if (xmlhttp.readyState == 4) {
           if (xmlhttp.status == 200) {
             var elem = document.getElementById("output");
-            elem.innerText = xmlhttp.responseText;
+            elem.innerText = xmlhttp.response;
           } else {
             alert("status = " + xmlhttp.status);
           }
